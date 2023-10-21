@@ -4,13 +4,10 @@ If we list all the natural numbers below 10 that are multiples of 3 or 5, we get
 
 Find the sum of all the multiples of 3 or below 1000
 """
-liste1=[3*x for x in range(1,10) if 3*x<10]
-sum1=0
-for i in range(0,len(liste1)):
-  sum1=sum1+liste1[i]
+liste1 = [3 * x for x in range(1, 10) if 3 * x < 10]
+sum1 = sum(liste1)
 
-liste2=[5*x for x in range(1,10) if 5*x<10]
-sum2=0
-for i in range(0,len(liste2)):
-  sum2=sum2+liste2[i]
+liste2 = [5 * x for x in range(1, 10) if 5 * x < 10]
+sum2 = sum(liste2)
+
 print(sum1+sum2)
