@@ -5,31 +5,47 @@
     What is the largest prime factor of the number 600851475143 ?
 """
 
-def isPremier(n):
+import random
+import math
+
+def isPremier(n, k=5):
     if n <= 1:
         return False
     if n <= 3:
         return True
-    if n % 2 == 0 or n % 3 == 0:
-        return False
-    i = 5
-    while i * i <= n:
-        if n % i == 0 or n % (i + 2) == 0:
+
+    # Étape 1 : Écriture de n-1 comme 2^r * d
+    r, d = 0, n - 1
+    while d % 2 == 0:
+        r += 1
+        d //= 2
+
+    # Étape 2 : Effectuer le test de Miller-Rabin k fois
+    for _ in range(k):
+        a = random.randint(2, n - 2)
+        x = pow(a, d, n)
+        if x == 1 or x == n - 1:
+            continue
+        for _ in range(r - 1):
+            x = pow(x, 2, n)
+            if x == n - 1:
+                break
+        else:
             return False
-        i += 6
+
     return True
 
 def largestPrimeFactorOfTheNumber(a):
 
-  x=int(a/2)
+  x=math.sqrt(a)
+  x=int(x)
   while (x>3):
     if (x-1)%6==0 or (x+1)%6 == 0:
       if ((x)%2!=0) and (x%5!=0):
-        if isPremier(x):
-          if a%(x)==0:
+        if a%(x)==0:
+          if isPremier(x):
             return x
             break
-          #print(f"{x} est un un nombre premier qui divise {a}")
     x-=1
 
 #600851475143
