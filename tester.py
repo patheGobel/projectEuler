@@ -1,10 +1,20 @@
-from math import sqrt
+
 def largestPalindrome3Digit(n):
-    n = str(n)
-    if n[0:2] == n[:-2]:
+    ma_liste = [int(chiffre) for chiffre in str(n)]
+    if palindrome(ma_liste):
         print("palindrome")
 
-largestPalindrome3Digit(899998)
+def palindrome(ma_liste):
+  # Utilisez le slicing pour extraire tous les éléments sauf les deux derniers
+  nouveaux_elements = ma_liste[:-2]
+
+  # Inversez les deux derniers éléments
+  nouveaux_elements.extend(reversed(ma_liste[-2:]))
+
+  # Réaffectez les éléments inversés à ma_liste
+  ma_liste = nouveaux_elements
+  if ma_liste[0:2] == ma_liste[-2:]:
+    return True  
 
 """
 89 99 98
