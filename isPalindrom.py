@@ -1,3 +1,4 @@
+"""
 def ispalindrom(ma_liste):
     # Utilisez le slicing pour extraire tous les éléments sauf les deux derniers
     nouveaux_elements = ma_liste[:-2]
@@ -6,4 +7,8 @@ def ispalindrom(ma_liste):
     # Réaffectez les éléments inversés à ma_liste
     ma_liste = nouveaux_elements
     if ma_liste[0:2] == ma_liste[-2:]:
-        return True 
+        return True
+"""
+#Nouvelle version de la fonction ispalindrom(ma_liste):
+def isPalindrome(maListe):
+    return maListe == maListe[::-1]
